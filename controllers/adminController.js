@@ -3,7 +3,7 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/userAuth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("config");
+require("dotenv").config();
 
 //Register Admin
 exports.registerAdmin = [
@@ -48,7 +48,7 @@ exports.registerAdmin = [
       };
       jwt.sign(
         payload,
-        config.get("adminToken"),
+        process.env.ADMIN_SECRET,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
@@ -97,7 +97,7 @@ exports.loginAdmin = [
       };
       jwt.sign(
         payload,
-        config.get("adminToken"),
+        process.env.ADMIN_SECRET,
         {
           expiresIn: 360000,
         },
