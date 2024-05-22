@@ -3,7 +3,7 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/userAuth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("config");
+require("dotenv").config();
 
 //Register User
 exports.registerUser = [
@@ -48,7 +48,7 @@ exports.registerUser = [
       };
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        process.env.JWT_SECRET,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
@@ -98,7 +98,7 @@ exports.loginUser = [
       };
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        process.env.JWT_SECRET,
         {
           expiresIn: 360000,
         },
