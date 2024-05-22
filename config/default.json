@@ -1,6 +1,1 @@
-{
-  "mongoURI": "mongodb+srv://Nishii_2101:Nishi8899@cluster0.h6upfuq.mongodb.net/",
-  "jwtSecret": "mysecrettoken",
-  "adminToken": "myadminsecrettoken"
-}
 
