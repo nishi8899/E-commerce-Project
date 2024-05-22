@@ -1,7 +1,8 @@
 //authorization middleware
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const Admin = require("../models/adminModel");
+require("dotenv").config(); 
+
 exports.adminAuthMiddleware = async (req, res, next) => {
   //Get token from the header
   //header key
@@ -15,7 +16,7 @@ exports.adminAuthMiddleware = async (req, res, next) => {
   //verify token
   try {
     //decode the token
-    const decoded = jwt.verify(token, config.get("adminToken"));
+     const decoded = jwt.verify(token,  process.env.ADMIN_SECRET);
 
     //setting req.user in the  decoded token  and decoded has user (remember in payload)
     req.admin = await Admin.findById(decoded.admin.id);
