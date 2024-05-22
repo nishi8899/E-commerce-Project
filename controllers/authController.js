@@ -113,7 +113,7 @@ exports.createAdminAuth = [
       };
       jwt.sign(
         payload,
-        config.get("adminToken"),
+        process.env.ADMIN_SECRET,
         {
           expiresIn: 360000,
         },
