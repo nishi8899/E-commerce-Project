@@ -1,7 +1,8 @@
 //authorization middleware
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const User = require("../models/userModel");
+require("dotenv").config();
+
 exports.userAuthMiddleware = async (req, res, next) => {
   //Get token from the header
   //header key
@@ -15,7 +16,7 @@ exports.userAuthMiddleware = async (req, res, next) => {
   //verify token
   try {
     //decode the token
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     //setting req.user in the  decoded token  and decoded has user (remember in payload)
     req.user = await User.findById(decoded.user.id);
 
