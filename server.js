@@ -33,7 +33,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "e-commerce-front-end-nishi-singhs-projects.vercel.ap",
+    origin: "https://e-commerce-back-end-nishi-singhs-projects.vercel.app",
     methods: "GET, POST, PUT, DELETE",
     credentials: true,
   })
