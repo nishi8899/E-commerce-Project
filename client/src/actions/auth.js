@@ -71,7 +71,7 @@ export const register =
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/register",
+        "https://e-commerce-front-end-nishi-singhs-projects.vercel.app/api/v1/register",
         body,
         config
       );
